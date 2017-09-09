@@ -1,0 +1,22 @@
+<div class="well hoverwell thumbnail">  
+    <hr/>
+    <h2><img [src]="event.imageUrl" style="width: 60px; height: 60px;"/> {{event?.name}}</h2>
+    <div>{{event?.date}}</div>
+    <!-- can also style with [style.color] ternary conditional -->
+    <div [ngStyle]="{ 'color' : event?.time == '8:00 am' ? 'green' : '#bbb',
+      'font-weight' : event?.time == '8:00 am' ? 'bold' : 'normal'}" 
+      [ngSwitch]='event?.time'>
+      <div>{{event?.time}}</div>
+      <span *ngSwitchCase="'8:00 am'">Early Start</span>
+      <span *ngSwitchCase="'10:00 am'">Late Start</span>
+      <span *ngSwitchDefault>Normal Start</span>
+    </div>
+    <div>${{event?.price | currency}}</div>
+  <div *ngIf="event?.location">
+    <span>Location: {{event?.location?.city}}, {{event?.location?.country}}</span>
+  </div>
+  <div [hidden]="!event?.onlineUrl">
+    <span>Online: {{event?.onlineUrl}}</span>
+  </div>
+  <button class="btn btn-primary" (click)="logEventName()"> Click Me!</button>
+</div>

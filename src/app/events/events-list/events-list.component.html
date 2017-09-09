@@ -1,0 +1,10 @@
+<div class="container">
+  <h1>Upcoming Angular 2 Events</h1>
+  <div class="row"> 
+    <div class="col-md-5" *ngFor="let event of events">
+      <app-event-thumbnail 
+      [event]='event' (eventClicked)="handleOutputEventClicked($event)"></app-event-thumbnail>
+    </div>
+  </div>
+  <button class="btn brn-primary">Log foo!</button>
+</div>
