@@ -10,12 +10,14 @@ import { AppComponent } from './app.component';
 import { EventsListComponent } from './events/events-list/events-list.component';
 import { EventThumbnailComponent } from './events/event-thumbnail/event-thumbnail.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { EventService } from './events/shared/event.service';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { appRoutes } from './routes/routes';
 import { RouterModule } from '@angular/router';
 import { CreateEventComponent } from './events/create-event/create-event.component';
+import { ErrorsComponent } from './errors/errors.component';
 
+import { EventService } from './events/shared/event.service';
+import { EventRouteActivatorService } from './events/event-details/event-route-activator.service'
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,8 @@ import { CreateEventComponent } from './events/create-event/create-event.compone
     EventThumbnailComponent,
     NavBarComponent,
     EventDetailsComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    ErrorsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +37,21 @@ import { CreateEventComponent } from './events/create-event/create-event.compone
     RouterModule.forRoot(appRoutes)
   ],
   exports: [ RouterModule ],
-  providers: [EventService],
+  providers: [
+    EventService,
+    EventRouteActivatorService,
+   {
+     provide : 'canDeactivateCreateEvent',
+     useValue : checkDirtyState
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+function checkDirtyState(component: CreateEventComponent) { //route guard for creat event
+  if(component.isDirty)
+    return window.confirm("You have not completed your event. Would you like to discard changes?");
+  else
+    return true;
+}
