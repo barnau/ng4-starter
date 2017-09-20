@@ -9,6 +9,7 @@ import {ToastrModule} from '../../node_modules/toastr-ng2';
 import { AppComponent } from './app.component';
 import { EventsListComponent } from './events/events-list/events-list.component';
 import { EventThumbnailComponent } from './events/event-thumbnail/event-thumbnail.component';
+import { EventsListResolverService } from './events/events-list/events-list-resolver.service'
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { appRoutes } from './routes/routes';
@@ -17,7 +18,10 @@ import { CreateEventComponent } from './events/create-event/create-event.compone
 import { ErrorsComponent } from './errors/errors.component';
 
 import { EventService } from './events/shared/event.service';
-import { EventRouteActivatorService } from './events/event-details/event-route-activator.service'
+import { EventRouteActivatorService } from './events/event-details/event-route-activator.service';
+import { AuthService } from './user/auth.service';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +43,9 @@ import { EventRouteActivatorService } from './events/event-details/event-route-a
   exports: [ RouterModule ],
   providers: [
     EventService,
+    EventsListResolverService,
     EventRouteActivatorService,
+    AuthService,
    {
      provide : 'canDeactivateCreateEvent',
      useValue : checkDirtyState
@@ -49,7 +55,7 @@ import { EventRouteActivatorService } from './events/event-details/event-route-a
 })
 export class AppModule { }
 
-function checkDirtyState(component: CreateEventComponent) { //route guard for creat event
+export function checkDirtyState(component: CreateEventComponent) { //route guard for creat event
   if(component.isDirty)
     return window.confirm("You have not completed your event. Would you like to discard changes?");
   else

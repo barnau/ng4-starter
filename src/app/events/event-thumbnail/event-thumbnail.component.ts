@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { ToastrService } from 'toastr-ng2';
+import { IEvent } from '../shared/event.model'
 
 @Component({
   selector: 'app-event-thumbnail',
@@ -9,7 +10,7 @@ import { ToastrService } from 'toastr-ng2';
 })
 export class EventThumbnailComponent implements OnInit {
 
- @Input() event:any;
+ @Input() event:IEvent;
  @Output() eventClicked = new EventEmitter;
 
  logFoo() {
