@@ -19,7 +19,6 @@ export class EventThumbnailComponent implements OnInit {
 
  logEventName() {
   this.eventClicked.emit(this.event.name);
-  this.toastrService.success('FUck ', 'YEah');
  }
 
   constructor(private toastrService: ToastrService) { }

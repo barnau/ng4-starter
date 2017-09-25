@@ -1,6 +1,6 @@
 <div [routerLink]="['/events', event.id]" class="well hoverwell thumbnail">  
     <hr/>
-    <h2><img [src]="event.imageUrl" style="width: 60px; height: 60px;"/> {{event?.name}}</h2>
+    <h2><img [src]="event.imageUrl" *ngIf="event.imageUrl" style="width: 60px; height: 60px;"/> {{event?.name}}</h2>
     <div>{{event?.date}}</div>
     <!-- can also style with [style.color] ternary conditional -->
     <div  [ngStyle]="{ 'color' : event?.time == '8:00 am' ? 'green' : '#bbb',

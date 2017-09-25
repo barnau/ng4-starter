@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule,  } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -20,6 +20,7 @@ import { ErrorsComponent } from './errors/errors.component';
 import { EventService } from './events/shared/event.service';
 import { EventRouteActivatorService } from './events/event-details/event-route-activator.service';
 import { AuthService } from './user/auth.service';
+import { CreateSessionComponent } from './events/create-event/create-session/create-session.component';
 
 
 @NgModule({
@@ -31,10 +32,12 @@ import { AuthService } from './user/auth.service';
     EventDetailsComponent,
     CreateEventComponent,
     ErrorsComponent,
+    CreateSessionComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
