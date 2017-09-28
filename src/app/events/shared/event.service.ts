@@ -4,6 +4,8 @@ import { Observable, Subject } from 'rxjs/RX';
 
 @Injectable()
 export class EventService {
+  
+  constructor() { }
 
   getEvents():Observable<IEvent[]> {
     let subject = new Subject<IEvent[]>();
@@ -23,8 +25,12 @@ export class EventService {
     event.sessions = [];
     EVENTS.push(event);
   }
-  constructor() { }
 
+  updateEvent(event: IEvent)
+  {
+    let index = EVENTS.findIndex( x => x.id === event.id);
+    EVENTS[index] = event;
+  }
 }
 
 const EVENTS: IEvent[] = [

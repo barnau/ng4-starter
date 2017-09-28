@@ -21,6 +21,9 @@ import { EventService } from './events/shared/event.service';
 import { EventRouteActivatorService } from './events/event-details/event-route-activator.service';
 import { AuthService } from './user/auth.service';
 import { CreateSessionComponent } from './events/create-event/create-session/create-session.component';
+import { SessionListComponent } from './events/event-details/session-list/session-list.component';
+import { CollapsableWellComponent } from './events/shared/collapsable-well/collapsable-well.component';
+
 
 
 @NgModule({
@@ -33,6 +36,8 @@ import { CreateSessionComponent } from './events/create-event/create-session/cre
     CreateEventComponent,
     ErrorsComponent,
     CreateSessionComponent,
+    SessionListComponent,
+    CollapsableWellComponent,
   ],
   imports: [
     BrowserModule,
