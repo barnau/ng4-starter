@@ -23,6 +23,7 @@ import { AuthService } from './user/auth.service';
 import { CreateSessionComponent } from './events/create-event/create-session/create-session.component';
 import { SessionListComponent } from './events/event-details/session-list/session-list.component';
 import { CollapsableWellComponent } from './events/shared/collapsable-well/collapsable-well.component';
+import { DurationPipe } from './events/shared/duration.pipe';
 
 
 
@@ -38,6 +39,7 @@ import { CollapsableWellComponent } from './events/shared/collapsable-well/colla
     CreateSessionComponent,
     SessionListComponent,
     CollapsableWellComponent,
+    DurationPipe,
   ],
   imports: [
     BrowserModule,
