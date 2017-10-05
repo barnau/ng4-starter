@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {ToastrModule} from '../../node_modules/toastr-ng2';
+import { JQ_TOKEN } from './common/jquery.service';
+
 
 import { AppComponent } from './app.component';
 import { EventsListComponent } from './events/events-list/events-list.component';
@@ -24,6 +26,9 @@ import { CreateSessionComponent } from './events/create-event/create-session/cre
 import { SessionListComponent } from './events/event-details/session-list/session-list.component';
 import { CollapsableWellComponent } from './events/shared/collapsable-well/collapsable-well.component';
 import { DurationPipe } from './events/shared/duration.pipe';
+import { SimpleModalComponent } from './common/simple-modal/simple-modal.component';
+
+declare let JQuery : Object;
 
 
 
@@ -40,6 +45,7 @@ import { DurationPipe } from './events/shared/duration.pipe';
     SessionListComponent,
     CollapsableWellComponent,
     DurationPipe,
+    SimpleModalComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,6 +59,7 @@ import { DurationPipe } from './events/shared/duration.pipe';
   exports: [ RouterModule ],
   providers: [
     EventService,
+    { provide: JQ_TOKEN, useValue: JQuery},
     EventsListResolverService,
     EventRouteActivatorService,
     AuthService,
