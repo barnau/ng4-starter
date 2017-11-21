@@ -39,13 +39,12 @@ export class EventService {
 
       EVENTS.forEach(event => {
         var matchingSessions = event.sessions.filter(session => 
-          session.name.toLocaleLowerCase().indexOf(term)  > -1
-      );
-  
-      matchingSessions = matchingSessions.map((session: any) => {
-        session.eventId = event.id;
-        return session;
-      });
+          session.name.toLocaleLowerCase().indexOf(term)  > -1);
+
+          matchingSessions = matchingSessions.map((session: any) => {
+            session.eventId = event.id;
+            return session;
+          });
       results = results.concat(matchingSessions);
     });
 

@@ -27,8 +27,9 @@ import { SessionListComponent } from './events/event-details/session-list/sessio
 import { CollapsableWellComponent } from './events/shared/collapsable-well/collapsable-well.component';
 import { DurationPipe } from './events/shared/duration.pipe';
 import { SimpleModalComponent } from './common/simple-modal/simple-modal.component';
+import { ModalTriggerDirective } from './common/modal-trigger.directive';
 
-declare let JQuery : Object;
+declare var jQuery: Object;
 
 
 
@@ -46,6 +47,7 @@ declare let JQuery : Object;
     CollapsableWellComponent,
     DurationPipe,
     SimpleModalComponent,
+    ModalTriggerDirective,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,7 @@ declare let JQuery : Object;
   exports: [ RouterModule ],
   providers: [
     EventService,
-    { provide: JQ_TOKEN, useValue: JQuery},
+  { provide: JQ_TOKEN, useValue: jQuery},
     EventsListResolverService,
     EventRouteActivatorService,
     AuthService,
