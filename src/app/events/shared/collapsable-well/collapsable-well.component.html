@@ -1,0 +1,13 @@
+<div (click)="toggleContent()" class="well pointable">  
+  <h4>
+    <ng-content select="[well-title]"></ng-content>
+  </h4>
+  <ng-content *ngIf="visible" select="[well-body]"></ng-content>
+</div>
+<!-- Example of content projection
+ng-content comes from what ever this collapsable well tag surrounds.
+Specify where to get ng-content by sticking that select attribute in the tag in parent component
+
+Essentially all this does is make a div toggleable; but it is reusable.
+
+-->
