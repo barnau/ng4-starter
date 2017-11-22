@@ -28,6 +28,8 @@ import { CollapsableWellComponent } from './events/shared/collapsable-well/colla
 import { DurationPipe } from './events/shared/duration.pipe';
 import { SimpleModalComponent } from './common/simple-modal/simple-modal.component';
 import { ModalTriggerDirective } from './common/modal-trigger.directive';
+import { UpvoteComponent } from './events/event-details/upvote/upvote.component';
+import { VoterService } from './events/event-details/voter.service';
 
 declare var jQuery: Object;
 
@@ -48,6 +50,7 @@ declare var jQuery: Object;
     DurationPipe,
     SimpleModalComponent,
     ModalTriggerDirective,
+    UpvoteComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +67,7 @@ declare var jQuery: Object;
   { provide: JQ_TOKEN, useValue: jQuery},
     EventsListResolverService,
     EventRouteActivatorService,
+    VoterService,
     AuthService,
    {
      provide : 'canDeactivateCreateEvent',
